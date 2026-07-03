@@ -1,0 +1,1277 @@
+{
+	"admin": {
+		"menu": {
+			"users": "Users"
+		},
+		"title": "Administration",
+		"users": {
+			"confirmDelete": {
+				"confirm": "Delete",
+				"message": "Are you sure you want to delete this user? This action cannot be undone.",
+				"title": "Delete user"
+			},
+			"delete": "Delete",
+			"deleteUser": {
+				"deleted": "User has been deleted successfully!",
+				"deleting": "Deleting user...",
+				"notDeleted": "User could not be deleted. Please try again."
+			},
+			"emailVerified": {
+				"verified": "Email verified",
+				"waiting": "Email waiting for verification"
+			},
+			"impersonate": "Impersonate",
+			"impersonation": {
+				"impersonating": "Impersonating as {name}..."
+			},
+			"loading": "Loading users...",
+			"resendVerificationMail": {
+				"error": "Could not resend verification mail. Please try again.",
+				"submitting": "Resending verification mail...",
+				"success": "Verification mail has been sent.",
+				"title": "Resend verification mail"
+			},
+			"search": "Search for name or email...",
+			"title": "Manage users",
+			"assignAdminRole": "Assign admin role",
+			"removeAdminRole": "Remove admin role"
+		},
+		"description": "Manage your application."
+	},
+	"app": {
+		"menu": {
+			"accountSettings": "Settings",
+			"admin": "Admin",
+			"briefing": "Briefing",
+			"calendar": "Calendar",
+			"career": "Career",
+			"goals": "Goals",
+			"journal": "Journal",
+			"notes": "Notes",
+			"navigationTitle": "Menu",
+			"openNavigation": "Open navigation",
+			"start": "Start",
+			"tasks": "Tasks",
+			"wishlist": "Wishlist"
+		},
+		"userMenu": {
+			"accountSettings": "Settings",
+			"colorMode": "Color mode",
+			"documentation": "Documentation",
+			"home": "Home",
+			"logout": "Logout"
+		},
+		"notifications": {
+			"title": "Notifications",
+			"empty": "No notifications yet.",
+			"markAllRead": "Mark all as read",
+			"clearAll": "Clear",
+			"fallbackTitle": "Notification",
+			"aria": {
+				"open": "Open notifications"
+			}
+		}
+	},
+	"auth": {
+		"errors": {
+			"invalidEmailOrPassword": "The credentials you entered are invalid. Please check them and try again.",
+			"unknown": "Something went wrong. Please try again.",
+			"userNotFound": "This user does not exists",
+			"failedToCreateUser": "Could not create user. Please try again.",
+			"failedToCreateSession": "Could not create a session. Please try again.",
+			"failedToUpdateUser": "Could not update user. Please try again.",
+			"failedToGetSession": "Could not get the session.",
+			"invalidPassword": "The entered password is incorrect.",
+			"invalidEmail": "The entered email is invalid.",
+			"invalidToken": "The token you entered is invalid or has expired.",
+			"credentialAccountNotFound": "Account not found.",
+			"emailCanNotBeUpdated": "Email could not be updated. Please try again.",
+			"emailNotVerified": "Please verify your email first before logging in.",
+			"failedToGetUserInfo": "Could not load user information.",
+			"idTokenNotSupported": "ID token is not supported.",
+			"passwordTooLong": "Password is too long.",
+			"passwordTooShort": "Password is too short.",
+			"providerNotFound": "This provider is not suppported.",
+			"socialAccountAlreadyLinked": "This account is already linked to a user.",
+			"userEmailNotFound": "Email not found.",
+			"userAlreadyExists": "This user already exists.",
+			"userAlreadyExistsUseAnotherEmail": "User already exists. Use another email.",
+			"sessionExpired": "The session has expired.",
+			"failedToUnlinkLastAccount": "Failed to unlink account",
+			"accountNotFound": "Account not found"
+		},
+		"forgotPassword": {
+			"backToSignin": "Back to signin",
+			"email": "Email",
+			"hints": {
+				"linkNotSent": {
+					"message": "We are sorry, but we were unable to send you a link to reset your password. Please try again later.",
+					"title": "Link not sent"
+				},
+				"linkSent": {
+					"message": "We have sent you a link to continue. Please check your inbox.",
+					"title": "Link sent"
+				}
+			},
+			"message": "Please enter your email address and we will send you a link to reset your password.",
+			"submit": "Send link",
+			"title": "Forgot your password?"
+		},
+		"bootstrap": {
+			"title": "Welcome to Tophe",
+			"subtitle": "This is your own private space. Create your account to get started - it only takes a moment.",
+			"name": "Your name",
+			"passwordHint": "At least 8 characters. Pick something only you know.",
+			"submit": "Create my account",
+			"error": "Something went wrong creating your account. Please try again."
+		},
+		"login": {
+			"continueWith": "Or continue with",
+			"createAnAccount": "Create an account",
+			"dontHaveAnAccount": "Don't have an account yet?",
+			"forgotPassword": "Forgot password?",
+			"hints": {
+				"invalidCredentials": "The email or password you entered are invalid. Please try again.",
+				"linkSent": {
+					"message": "We have sent you a link to continue. Please check your inbox.",
+					"title": "Link sent"
+				}
+			},
+			"loginWithPasskey": "Login with passkey",
+			"modes": {
+				"magicLink": "Magic link",
+				"password": "Password"
+			},
+			"submit": "Sign in",
+			"subtitle": "Please enter your credentials to sign in.",
+			"title": "Welcome back",
+			"sendMagicLink": "Send magic link"
+		},
+		"resetPassword": {
+			"backToSignin": "Back to signin",
+			"hints": {
+				"error": "We are sorry, but we were unable to reset your password. Please try again.",
+				"success": "Your password has been reset successfully."
+			},
+			"message": "Please enter a new password.",
+			"newPassword": "New password",
+			"submit": "Reset password",
+			"title": "Reset your password"
+		},
+		"signup": {
+			"alreadyHaveAccount": "Already have an account?",
+			"email": "Email",
+			"hints": {
+				"signupFailed": "We are sorry, but we were unable to create your account. Please try again later.",
+				"verifyEmail": "We have sent you a link to verify your email. Please check your inbox."
+			},
+			"message": "We are happy that you want to join us. Please fill in the form below to create your account.",
+			"name": "Name",
+			"password": "Password",
+			"signIn": "Sign in",
+			"submit": "Create account",
+			"title": "Create an account"
+		},
+		"verify": {
+			"title": "Verify your account",
+			"code": "One-time password",
+			"submit": "Verify",
+			"backToSignin": "Back to login",
+			"message": "Enter the one-time password from your authenticator app to continue."
+		}
+	},
+	"briefing": {
+		"title": "Briefing",
+		"paperName": "The Daily",
+		"edition": "Your personal edition",
+		"composing": "Composing today's edition",
+		"composingHint": "Reading your day and scanning the news picked for you.",
+		"yourDay": "Your day",
+		"byTheNumbers": "By the numbers",
+		"agenda": "On the agenda",
+		"onThisDay": "From the archive",
+		"theFeed": "Worth your time",
+		"noNews": "Nothing in the feeds made the cut today.",
+		"read": "Read",
+		"regenerate": "Rebuild today's edition",
+		"error": "Couldn't put today's paper together. Try again shortly.",
+		"settings": {
+			"title": "What you want in your briefing",
+			"description": "Tell {name} what to surface. This steers which news makes your paper.",
+			"hint": "Plain language is fine: topics, regions, what to skip - whatever matters to you.",
+			"save": "Save",
+			"saved": "Saved. Rebuilding today's paper.",
+			"error": "Couldn't save your interests.",
+			"sources": {
+				"title": "News sources",
+				"hint": "The feeds your paper is built from. Remove what you don't read, or add any RSS/Atom feed URL.",
+				"reset": "Reset to defaults",
+				"remove": "Remove {name}",
+				"empty": "No sources - your paper will have no news section.",
+				"namePlaceholder": "Name",
+				"urlPlaceholder": "https://example.com/feed.xml",
+				"add": "Add",
+				"invalidUrl": "That doesn't look like an http(s) URL."
+			},
+			"testTitle": "Test the notification",
+			"testHint": "Send yourself the briefing notification now to check it reaches your phone.",
+			"testButton": "Send a test",
+			"testSent": "Sent. Check your devices.",
+			"testError": "Couldn't send the test."
+		}
+	},
+	"choosePlan": {
+		"title": "Choose your plan",
+		"description": "To continue, please select a plan."
+	},
+	"documentation": {
+		"title": "Documentation"
+	},
+	"notFound": {
+		"code": "404",
+		"title": "Page not found",
+		"goToDashboard": "Go to dashboard",
+		"goToHomepage": "Go to homepage"
+	},
+	"onboarding": {
+		"account": {
+			"avatar": "Avatar",
+			"avatarDescription": "Click the circle or drop an image to it to upload your avatar.",
+			"name": "Name"
+		},
+		"continue": "Continue",
+		"message": "Just a few quick steps to get you started.",
+		"notifications": {
+			"accountSetupFailed": "We are sorry, but we were unable to set up your account. Please try again later."
+		},
+		"pricing": {
+			"planSelected": "Your plan has been selected successfully.",
+			"skip": "Skip for now"
+		},
+		"step": "Step {step} / {total}",
+		"title": "Set up your account"
+	},
+	"settings": {
+		"account": {
+			"avatar": {
+				"description": "To change your avatar click the picture in this block and select a file from your computer to upload.",
+				"notifications": {
+					"error": "Could not update avatar",
+					"success": "Avatar was updated successfully"
+				},
+				"title": "Your avatar"
+			},
+			"changeEmail": {
+				"description": "To change your email, enter the new email and hit save. You will have to confirm the new email before it will become active.",
+				"notifications": {
+					"error": "Could not update email",
+					"success": "Email was updated successfully"
+				},
+				"title": "Your email"
+			},
+			"changeName": {
+				"notifications": {
+					"error": "Could not update name",
+					"success": "Name was updated successfully"
+				},
+				"title": "Your name"
+			},
+			"deleteAccount": {
+				"confirmation": "Are you sure you want to delete your account?",
+				"description": "Permanently delete your account. Once you delete your account, there is no going back. To confirm, please enter your password below:",
+				"notifications": {
+					"error": "Could not delete account",
+					"success": "Account was deleted successfully"
+				},
+				"submit": "Delete account",
+				"title": "Delete account"
+			},
+			"sidebar": {
+				"title": "Sidebar",
+				"description": "Choose which modules appear in your sidebar. With none selected, all of them show."
+			},
+			"brandLogo": {
+				"title": "Tophe logo",
+				"description": "Show the Tophe logo across the app — browser tab icon, sign-in page, and the AI assistant icon. Turn it off for a neutral look.",
+				"notifications": {
+					"error": "Could not update logo preference",
+					"success": "Logo preference updated"
+				}
+			},
+			"timezone": {
+				"title": "Timezone",
+				"description": "Used to decide when daily reminders fire and when calendar event reminders are sent.",
+				"notifications": {
+					"error": "Could not update timezone",
+					"success": "Timezone updated"
+				}
+			},
+			"security": {
+				"activeSessions": {
+					"description": "These are all the active sessions of your account. Click the X to end a specifc session.",
+					"title": "Active sessions",
+					"notifications": {
+						"revokeSession": {
+							"success": "Session revoked"
+						}
+					},
+					"currentSession": "Current session"
+				},
+				"changePassword": {
+					"currentPassword": "Current password",
+					"newPassword": "New password",
+					"notifications": {
+						"error": "Could not update password",
+						"success": "Password was updated successfully"
+					},
+					"title": "Your password"
+				},
+				"connectedAccounts": {
+					"connect": "Connect",
+					"connected": "Connected",
+					"disconnect": "Disconnect",
+					"title": "Connected accounts"
+				},
+				"logout": {
+					"title": "Log out",
+					"description": "End your session on this device.",
+					"submit": "Log out"
+				},
+				"passkeys": {
+					"addPasskey": "Add passkey",
+					"description": "Use passkeys as a secure alternative to passwords.",
+					"notifications": {
+						"addPasskey": {
+							"error": {
+								"title": "Could not add passkey"
+							},
+							"success": {
+								"title": "Passkey added"
+							}
+						},
+						"deletePasskey": {
+							"error": {
+								"title": "Could not delete passkey"
+							},
+							"loading": {
+								"title": "Deleting passkey..."
+							},
+							"success": {
+								"title": "Passkey deleted"
+							}
+						}
+					},
+					"title": "Passkeys"
+				},
+				"setPassword": {
+					"description": "You have not set a password yet. To set one, you need to go through the password reset flow. Click the button below to send an email to reset your password and follow the instructions in the email.",
+					"notifications": {
+						"error": "Could not send link to set password. Please try again.",
+						"success": "Check your inbox for the link to set your password."
+					},
+					"submit": "Set password",
+					"title": "Your password"
+				},
+				"title": "Security",
+				"twoFactor": {
+					"title": "Two-factor authentication",
+					"description": "Add an extra layer of security to your account.",
+					"dialog": {
+						"password": {
+							"title": "Verify with password",
+							"description": "Please verify your account by entering your password:",
+							"label": "Your password:"
+						},
+						"totpUrl": {
+							"description": "Use your preferred authenticator app and scan the QR code with it or enter the secret below manually to set up two-factor authentication.",
+							"code": "Enter 6-digit code to verify the setup:",
+							"title": "Enable two-factor authentication"
+						}
+					},
+					"enable": "Enable two-factor authentication",
+					"notifications": {
+						"verify": {
+							"success": {
+								"title": "Two-factor authentication has been enabled successfully."
+							}
+						},
+						"enable": {
+							"error": {
+								"title": "Could not verify your account with the provided password. Please try again."
+							}
+						},
+						"disable": {
+							"success": {
+								"title": "Two-factor authentication has been disabled successfully."
+							}
+						}
+					},
+					"disable": "Disable two-factor authentication",
+					"enabled": "You have two-factor authentication enabled for your account."
+				}
+			},
+			"subtitle": "Manage the settings of your personal account.",
+			"title": "Settings"
+		},
+		"billing": {
+			"createCustomerPortal": {
+				"label": "Manage billing",
+				"notifications": {
+					"error": {
+						"title": "Could not create a customer portal session. Please try again."
+					}
+				}
+			},
+			"activePlan": {
+				"status": {
+					"active": "Active",
+					"canceled": "Canceled",
+					"expired": "Expired",
+					"incomplete": "Incomplete",
+					"past_due": "Past due",
+					"paused": "Paused",
+					"trialing": "Trialing",
+					"unpaid": "Unpaid"
+				},
+				"title": "Your plan"
+			},
+			"changePlan": {
+				"description": "Choose a plan to subscribe to.",
+				"title": "Change your plan"
+			},
+			"title": "Billing"
+		},
+		"integrationsPage": {
+			"title": "Integrations",
+			"description": "Connect outside calendars and services to Tophe. All data stays on your server."
+		},
+		"notificationsPage": {
+			"title": "Notifications",
+			"description": "Choose how you receive notifications. Disabled options are stored; everything is enabled by default.",
+			"groups": {
+				"general": {
+					"title": "General"
+				},
+				"briefing": {
+					"title": "Briefing"
+				},
+				"journal": {
+					"title": "Journal"
+				},
+				"calendar": {
+					"title": "Calendar"
+				},
+				"goals": {
+					"title": "Goals"
+				},
+				"notes": {
+					"title": "Notes"
+				}
+			},
+			"types": {
+				"APP_UPDATE": {
+					"label": "App updates"
+				},
+				"DAILY_BRIEFING": {
+					"label": "Daily briefing ready"
+				},
+				"JOURNAL_DAILY_REMINDER": {
+					"label": "Daily journal reminder"
+				},
+				"CALENDAR_EVENT_REMINDER": {
+					"label": "Event reminders"
+				},
+				"GOAL_CHECKIN_REMINDER": {
+					"label": "Goal check-in reminders"
+				},
+				"GOAL_DEADLINE_APPROACHING": {
+					"label": "Goal deadline warnings"
+				},
+				"MEMO_REMINDER": {
+					"label": "Note reminders"
+				}
+			},
+			"columns": {
+				"type": "Notification",
+				"inApp": "In-app",
+				"email": "Email"
+			},
+			"test": {
+				"title": "Send a test notification",
+				"description": "Fires a notification to yourself so you can verify the bell, the sound, and the email template. Respects your preferences below - if you've disabled in-app or email for app updates, that path will be skipped.",
+				"button": "Send test",
+				"success": "Test notification sent.",
+				"error": "Could not send the test. Please try again."
+			}
+		},
+		"menu": {
+			"account": {
+				"billing": "Billing",
+				"dangerZone": "Danger zone",
+				"general": "General",
+				"notifications": "Notifications",
+				"integrations": "Integrations",
+				"security": "Security",
+				"title": "Account"
+			}
+		},
+		"save": "Save"
+	},
+	"journal": {
+		"title": "Journal",
+		"subtitle": "A private space to capture your thoughts.",
+		"actions": {
+			"new": "New entry"
+		},
+		"empty": {
+			"title": "Your journal is empty",
+			"description": "Write your first entry to get started. Only you can see what you write here.",
+			"cta": "Write your first entry"
+		},
+		"moods": {
+			"GREAT": "Great",
+			"GOOD": "Good",
+			"OKAY": "Okay",
+			"LOW": "Low",
+			"BAD": "Bad"
+		},
+		"form": {
+			"title": "Title",
+			"titlePlaceholder": "What's on your mind?",
+			"titleRequired": "Title is required",
+			"date": "Date",
+			"content": "Entry",
+			"contentPlaceholder": "Write freely…",
+			"contentRequired": "Entry content is required",
+			"mood": "How are you feeling?",
+			"moodPlaceholder": "Pick a mood (optional)",
+			"moodNone": "No mood",
+			"cancel": "Cancel",
+			"create": "Save entry",
+			"save": "Save changes"
+		},
+		"new": {
+			"title": "New journal entry",
+			"subtitle": "Write down whatever's on your mind."
+		},
+		"edit": {
+			"title": "Edit entry",
+			"subtitle": "Make changes to your entry."
+		},
+		"entry": {
+			"back": "Back to journal",
+			"edit": "Edit",
+			"delete": "Delete",
+			"deleteConfirm": {
+				"title": "Delete this entry?",
+				"message": "This entry will be permanently deleted. This action cannot be undone.",
+				"confirm": "Delete"
+			}
+		},
+		"today": {
+			"cta": "Today's entry",
+			"title": "Daily"
+		},
+		"filters": {
+			"search": "Search",
+			"searchPlaceholder": "Search title or content…",
+			"range": "Range",
+			"rangeAll": "All time",
+			"rangeWeek": "Last 7 days",
+			"rangeMonth": "Last 30 days",
+			"rangeYear": "Last year",
+			"mood": "Mood",
+			"moodAll": "Any mood",
+			"kind": "Kind",
+			"kindAll": "All entries",
+			"kindDaily": "Daily",
+			"kindFreeform": "Freeform",
+			"clear": "Clear filters",
+			"emptyTitle": "No entries match these filters",
+			"emptyHint": "Try widening the range or clearing filters."
+		},
+		"summary": {
+			"title": "AI summary",
+			"description": "Let {name} read your recent entries and reflect back themes, moods, and moments that stood out. Your entries never leave your database except for this summary call.",
+			"period": "Period",
+			"generate": "Generate summary",
+			"generating": "{name} is reading your entries…",
+			"error": "Could not generate a summary. Please try again.",
+			"meta": "Based on {count} entries from the {period}.",
+			"periods": {
+				"WEEK": "past week",
+				"MONTH": "past month",
+				"YEAR": "past year"
+			}
+		},
+		"notifications": {
+			"created": "Entry saved.",
+			"updated": "Entry updated.",
+			"deleted": "Entry deleted.",
+			"saveError": "Could not save the entry. Please try again.",
+			"deleteError": "Could not delete the entry. Please try again."
+		}
+	},
+	"calendar": {
+		"title": "Calendar",
+		"subtitle": "Plan your days, weeks, and routines in one place.",
+		"actions": {
+			"new": "New event",
+			"syncOutlook": "Sync Outlook"
+		},
+		"nav": {
+			"previous": "Previous",
+			"next": "Next",
+			"today": "Today"
+		},
+		"views": {
+			"MONTH": "Month",
+			"DAY": "Day",
+			"AGENDA": "Agenda"
+		},
+		"weekdays": {
+			"mon": "Mon",
+			"tue": "Tue",
+			"wed": "Wed",
+			"thu": "Thu",
+			"fri": "Fri",
+			"sat": "Sat",
+			"sun": "Sun"
+		},
+		"month": {
+			"moreCount": "+{count} more"
+		},
+		"day": {
+			"allDay": "All day",
+			"createAt": "Create event at {time}"
+		},
+		"agenda": {
+			"heading": "Upcoming",
+			"emptyTitle": "Nothing on your calendar",
+			"emptyHint": "Add an event to start filling in your week.",
+			"allDay": "All day",
+			"recurring": "Recurring",
+			"outlook": "Outlook"
+		},
+		"dialog": {
+			"createTitle": "New event",
+			"editTitle": "Edit event"
+		},
+		"form": {
+			"title": "Title",
+			"titlePlaceholder": "What is this event about?",
+			"titleRequired": "Title is required",
+			"description": "Description",
+			"descriptionPlaceholder": "Notes, agenda, links…",
+			"location": "Location",
+			"locationPlaceholder": "Where is it?",
+			"allDay": "All-day event",
+			"allDayHint": "Spans the full day without a specific time.",
+			"start": "Starts",
+			"end": "Ends",
+			"endInvalid": "End must be after start",
+			"duration": "Duration",
+			"color": "Color",
+			"icon": "Icon",
+			"iconNone": "No icon",
+			"recurrence": "Repeat",
+			"customRulePlaceholder": "FREQ=WEEKLY;BYDAY=MO,WE,FR",
+			"reminder": "Reminder",
+			"cancel": "Cancel",
+			"close": "Close",
+			"create": "Create event",
+			"save": "Save changes",
+			"delete": "Delete"
+		},
+		"reminderOptions": {
+			"NONE": "No reminder",
+			"5": "5 minutes before",
+			"15": "15 minutes before",
+			"30": "30 minutes before",
+			"60": "1 hour before",
+			"1440": "1 day before"
+		},
+		"durationOptions": {
+			"15": "15 minutes",
+			"30": "30 minutes",
+			"45": "45 minutes",
+			"60": "1 hour",
+			"90": "1 hour 30 minutes",
+			"120": "2 hours",
+			"180": "3 hours",
+			"240": "4 hours",
+			"CUSTOM": "Custom"
+		},
+		"managed": {
+			"bannerTitle": "This event is synced from Outlook",
+			"bannerHint": "Edits are read-only here. Change it in Outlook and it'll update on the next sync."
+		},
+		"integrations": {
+			"outlook": {
+				"title": "Outlook calendar",
+				"description": "Subscribe to a published Outlook calendar. Events are read-only and refresh on a schedule.",
+				"urlLabel": "Published ICS URL",
+				"urlHint": "In Outlook Web → Calendar → Settings → Shared calendars → Publish a calendar. Choose 'Can view titles and locations' and copy the ICS link.",
+				"currentUrl": "Connected URL",
+				"connect": "Connect",
+				"syncNow": "Sync now",
+				"disconnect": "Disconnect",
+				"cancel": "Cancel",
+				"confirmRemove": "Remove and delete synced events",
+				"status": "Status",
+				"statusOk": "Synced {when} - {count} events",
+				"statusUnknownError": "Last sync failed",
+				"statusNeverSynced": "Not synced yet",
+				"keyNote": "We store the URL encrypted. Rotating CALENDAR_INTEGRATION_SECRET will invalidate the saved URL - you'd need to reconnect."
+			},
+			"notifications": {
+				"saved": "Outlook calendar connected.",
+				"saveError": "Could not save the URL. Please check it and try again.",
+				"synced": "Synced {count} events from Outlook.",
+				"syncError": "Sync failed. See the status above.",
+				"removed": "Outlook calendar disconnected.",
+				"removeError": "Could not disconnect. Please try again."
+			}
+		},
+		"recurrence": {
+			"NONE": "Does not repeat",
+			"DAILY": "Daily",
+			"WEEKDAYS": "Every weekday (Mon–Fri)",
+			"WEEKLY": "Weekly",
+			"MONTHLY": "Monthly",
+			"YEARLY": "Yearly",
+			"CUSTOM": "Custom RRULE…"
+		},
+		"icons": {
+			"calendar": "Calendar",
+			"briefcase": "Work",
+			"home": "Home",
+			"users": "People",
+			"heart": "Heart",
+			"star": "Star",
+			"flag": "Flag",
+			"sparkles": "Sparkles",
+			"book": "Book",
+			"graduationCap": "Education",
+			"dumbbell": "Workout",
+			"coffee": "Coffee",
+			"utensils": "Meal",
+			"cake": "Birthday",
+			"music": "Music",
+			"plane": "Travel",
+			"car": "Drive",
+			"mapPin": "Place",
+			"phone": "Call",
+			"video": "Meeting",
+			"play": "Play",
+			"bell": "Reminder",
+			"stethoscope": "Health",
+			"zap": "Quick"
+		},
+		"delete": {
+			"title": "Delete this event?",
+			"message": "This event will be permanently deleted. This action cannot be undone.",
+			"recurringMessage": "This is a recurring event. Delete only this occurrence or the whole series?",
+			"confirm": "Delete",
+			"thisOccurrence": "This occurrence",
+			"wholeSeries": "Whole series",
+			"cancel": "Cancel"
+		},
+		"notifications": {
+			"created": "Event created.",
+			"updated": "Event updated.",
+			"deleted": "Event deleted.",
+			"occurrenceDeleted": "Occurrence skipped.",
+			"saveError": "Could not save the event. Please try again.",
+			"deleteError": "Could not delete the event. Please try again."
+		}
+	},
+	"start": {
+		"eyebrow": "My workspace",
+		"welcomeFirst": "Hello, {name}.",
+		"welcomeSecond": "Welcome back.",
+		"welcomeEnd": "",
+		"welcome": "Hello, {name}.",
+		"subtitle": "A quiet corner to think, plan, and keep track of what matters. Pick a page below.",
+		"quickNew": "New entry",
+		"modules": {
+			"title": "Modules",
+			"subtitle": "Everything that lives inside your workspace.",
+			"open": "Open",
+			"journal": {
+				"title": "Journal",
+				"description": "Private entries and check-ins, with AI reflections over time."
+			},
+			"calendar": {
+				"title": "Calendar",
+				"description": "Plan your days and weeks. Schedule one-offs or recurring routines."
+			},
+			"goals": {
+				"title": "Goals",
+				"description": "Set intentions, break them into steps, and track your progress."
+			},
+			"tasks": {
+				"title": "Tasks",
+				"description": "A simple list of what's next, with priorities and due dates."
+			},
+			"notes": {
+				"title": "Notes",
+				"description": "Quick notes with optional reminders, so a nudge finds you later."
+			},
+			"career": {
+				"title": "Career",
+				"description": "Your roles, salary, skills, and wins on one timeline, with AI-suggested next steps."
+			},
+			"wishlist": {
+				"title": "Wishlist",
+				"description": "Things you want to buy, ranked by how much you actually need them."
+			},
+			"briefing": {
+				"title": "Briefing",
+				"description": "Your morning paper: the day ahead, your goals, and news picked for you."
+			}
+		}
+	},
+	"common": {
+		"confirmation": {
+			"cancel": "Cancel",
+			"confirm": "Confirm"
+		},
+		"actions": {
+			"continue": "Continue",
+			"verify": "Verify"
+		},
+		"colorMode": {
+			"system": "System",
+			"light": "Light",
+			"dark": "Dark"
+		},
+		"passwordCriteria": {
+			"minLength": "Min. 8 characters",
+			"upperAndLowercase": "Upper & lowercase",
+			"number": "Number",
+			"specialCharacter": "Special character"
+		}
+	},
+	"checkoutReturn": {
+		"title": "Processing your purchase",
+		"description": "Please wait while we confirm your payment.",
+		"loading": "Confirming your purchase, please wait..."
+	},
+	"career": {
+		"title": "Career",
+		"subtitle": "Your progression, salary, and skills on one timeline - to see how far you've come and decide what's next.",
+		"overview": {
+			"current": "Current role",
+			"salary": "Salary",
+			"netMonthly": "net / month",
+			"growth": "Salary growth",
+			"sinceStart": "since your first role",
+			"tenure": "Tenure",
+			"tenureSince": "since {date}"
+		},
+		"salary": {
+			"title": "Salary over time",
+			"subtitle": "Net monthly pay across roles and raises."
+		},
+		"timeline": {
+			"title": "Timeline",
+			"addRole": "Add role",
+			"current": "Current",
+			"editRole": "Edit role",
+			"empty": {
+				"title": "No roles yet",
+				"description": "Add your first role to start building your career timeline.",
+				"cta": "Add your first role"
+			}
+		},
+		"kinds": {
+			"EMPLOYMENT": "Employment",
+			"FREELANCE": "Freelance",
+			"EDUCATION": "Education",
+			"OTHER": "Other"
+		},
+		"form": {
+			"title": "Job title",
+			"titlePlaceholder": "Product Manager",
+			"company": "Company",
+			"companyPlaceholder": "Acme Inc.",
+			"kind": "Type",
+			"location": "Location",
+			"locationPlaceholder": "Remote · Anywhere",
+			"startDate": "Start",
+			"endDate": "End",
+			"current": "I currently work here",
+			"summary": "Summary",
+			"summaryPlaceholder": "What you did, in a sentence or two.",
+			"highlights": "Highlights",
+			"highlightsHint": "Achievements and things you shipped in this role.",
+			"highlightText": "Highlight",
+			"highlightMetric": "Metric (optional)",
+			"addHighlight": "Add highlight",
+			"removeHighlight": "Remove highlight",
+			"salaries": "Salary",
+			"salariesHint": "Each raise is a point on the salary chart.",
+			"salaryDate": "Effective",
+			"salaryAmount": "Amount",
+			"salaryLabel": "Label",
+			"salaryLabelPlaceholder": "Raise, promotion…",
+			"addSalary": "Add salary point",
+			"removeSalary": "Remove salary point",
+			"salaryDefaultsHint": "Amounts are treated as net monthly in EUR.",
+			"delete": "Delete role",
+			"deleteConfirmTitle": "Delete this role?",
+			"deleteConfirmDescription": "This removes the role and its highlights and salary points. This can't be undone.",
+			"cancel": "Cancel",
+			"submit": "Add role",
+			"save": "Save",
+			"createTitle": "Add a role",
+			"editTitle": "Edit role",
+			"created": "Role added.",
+			"saved": "Role saved.",
+			"deleted": "Role deleted.",
+			"saveError": "Something went wrong. Please try again."
+		},
+		"skills": {
+			"title": "Skills",
+			"add": "Add skill",
+			"name": "Skill",
+			"namePlaceholder": "Prompt engineering",
+			"category": "Category",
+			"save": "Add",
+			"empty": "No skills yet. Add a few to round out your profile.",
+			"remove": "Remove {name}"
+		},
+		"reflections": {
+			"title": "Reflections",
+			"subtitle": "Your own notes on where you are and where you want to go.",
+			"placeholder": "What's working, what's frustrating, what you want more (or less) of…",
+			"save": "Save",
+			"saved": "Reflections saved."
+		},
+		"nextSteps": {
+			"title": "Next steps",
+			"subtitle": "Concrete moves you want to make next.",
+			"placeholder": "Add a next step…",
+			"add": "Add",
+			"empty": "Nothing here yet. Add a step, or pull one from the AI insights.",
+			"markDone": "Mark done",
+			"markOpen": "Mark not done",
+			"remove": "Remove",
+			"aiTag": "AI"
+		},
+		"insights": {
+			"title": "AI insights",
+			"subtitle": "A grounded read on your history, with suggested next steps.",
+			"generate": "Generate",
+			"regenerate": "Regenerate",
+			"empty": "Generate insights to get a read on your trajectory and next moves.",
+			"error": "Couldn't generate insights. Please try again.",
+			"strengths": "Strengths",
+			"watchOuts": "Watch-outs",
+			"nextSteps": "Suggested next steps",
+			"addStep": "Add as next step",
+			"addedStep": "Added to your next steps.",
+			"generatedAt": "Generated {date}",
+			"timeframe": {
+				"NOW": "Now",
+				"SHORT_TERM": "Short term",
+				"LONG_TERM": "Long term"
+			},
+			"effort": {
+				"LOW": "Low effort",
+				"MEDIUM": "Medium effort",
+				"HIGH": "High effort"
+			}
+		}
+	},
+	"goals": {
+		"title": "Goals",
+		"subtitle": "Track the things you're working toward, not just what's on your plate.",
+		"actions": {
+			"new": "New goal"
+		},
+		"list": {
+			"reorder": "Drag to reorder",
+			"reorderError": "Couldn't save the new order."
+		},
+		"empty": {
+			"title": "No goals yet",
+			"description": "A goal is something you make progress toward - not a one-off task. Start with something measurable.",
+			"cta": "Create your first goal"
+		},
+		"filters": {
+			"active": "Active",
+			"completed": "Completed",
+			"all": "All",
+			"searchPlaceholder": "Search goals..."
+		},
+		"statuses": {
+			"ACTIVE": "Active",
+			"COMPLETED": "Completed",
+			"PAUSED": "Paused",
+			"ARCHIVED": "Archived"
+		},
+		"types": {
+			"NUMERIC": {
+				"label": "Numeric",
+				"description": "Count toward a target (e.g. 30 books, 100 km)."
+			},
+			"BOOLEAN": {
+				"label": "Yes / no",
+				"description": "A single outcome - done or not done."
+			},
+			"MILESTONE": {
+				"label": "Milestones",
+				"description": "Break the goal into checkpoints you tick off."
+			}
+		},
+		"horizons": {
+			"LONG_TERM": {
+				"label": "Long-term",
+				"description": "A vision or multi-year ambition. No fixed end date."
+			},
+			"PROJECT": {
+				"label": "Project",
+				"description": "A finite effort with a clear end. Often broken into milestones."
+			},
+			"HABIT": {
+				"label": "Habit",
+				"description": "A short, recurring sprint. Tracks consistency, not finality."
+			}
+		},
+		"cadences": {
+			"NONE": "No reminders",
+			"DAILY": "Daily",
+			"WEEKLY": "Weekly (Mondays)",
+			"MONTHLY": "Monthly (1st)"
+		},
+		"card": {
+			"dueBy": "Due by {date}",
+			"logProgress": "Log",
+			"logAction": "Log",
+			"logHint": "Add a quick update toward your target.",
+			"customAmount": "Custom",
+			"remaining": "{remaining} to go",
+			"markDone": "Mark done",
+			"doneLabel": "Done"
+		},
+		"new": {
+			"title": "New goal",
+			"subtitle": "Define what you want to achieve and how you'll know you're there."
+		},
+		"edit": {
+			"title": "Edit goal",
+			"subtitle": "Update the details of your goal."
+		},
+		"form": {
+			"horizon": "Horizon",
+			"title": "Title",
+			"titlePlaceholder": "Read 30 books this year",
+			"description": "Description",
+			"descriptionPlaceholder": "Why does this matter? What counts as progress?",
+			"type": "Goal type",
+			"target": "Target",
+			"unit": "Unit",
+			"unitPlaceholder": "books, km, hours...",
+			"milestones": "Milestones",
+			"milestonePlaceholder": "Milestone title",
+			"addMilestone": "Add milestone",
+			"startDate": "Start date",
+			"dueDate": "Due date",
+			"cadence": "Reminder cadence",
+			"cadenceHint": "Get a nudge to check in. Fires in your local timezone.",
+			"color": "Color",
+			"icon": "Icon",
+			"iconNone": "None",
+			"cancel": "Cancel",
+			"create": "Create goal",
+			"save": "Save changes"
+		},
+		"detail": {
+			"back": "Back to goals",
+			"edit": "Edit",
+			"delete": "Delete goal",
+			"markComplete": "Mark complete",
+			"pause": "Pause",
+			"resume": "Resume",
+			"reopen": "Reopen",
+			"archive": "Archive",
+			"milestones": "Milestones",
+			"history": "Check-in history",
+			"checkedIn": "Checked in",
+			"startedOn": "Started {date}",
+			"dueOn": "Due {date}",
+			"cadenceLabel": "{cadence} reminders",
+			"deleteConfirm": {
+				"title": "Delete goal?",
+				"message": "This will permanently delete the goal, its milestones, and its check-in history.",
+				"confirm": "Delete"
+			}
+		},
+		"notifications": {
+			"created": "Goal created.",
+			"updated": "Goal updated.",
+			"deleted": "Goal deleted.",
+			"checkedIn": "Progress logged.",
+			"completed": "Goal completed!",
+			"checkInDeleted": "Check-in removed.",
+			"checkInError": "Couldn't log that. Please try again.",
+			"saveError": "Couldn't save. Please try again.",
+			"deleteError": "Couldn't delete. Please try again."
+		}
+	},
+	"notes": {
+		"title": "Notes",
+		"subtitle": "Quick notes with optional reminders. Jot it down, get a nudge later if you want one.",
+		"actions": {
+			"new": "New note"
+		},
+		"list": {
+			"pinned": "Pinned",
+			"others": "Everything else",
+			"pin": "Pin note",
+			"unpin": "Unpin note",
+			"reorder": "Drag to reorder",
+			"saveError": "Couldn't save. Please try again."
+		},
+		"empty": {
+			"title": "No notes yet",
+			"description": "A note is a quick thought. Add one and (optionally) set a time to be reminded.",
+			"cta": "Write your first note"
+		},
+		"filters": {
+			"search": "Search",
+			"searchPlaceholder": "Search notes...",
+			"kind": "Kind",
+			"kindAll": "All",
+			"kindReminder": "With reminder",
+			"kindPlain": "Without reminder",
+			"clear": "Clear",
+			"emptyTitle": "No notes match",
+			"emptyHint": "Try clearing the search or filters."
+		},
+		"form": {
+			"title": "Title",
+			"titlePlaceholder": "What do you want to remember?",
+			"titleRequired": "Title is required",
+			"content": "Note",
+			"contentPlaceholder": "Add details (optional)",
+			"remindAt": "Remind me on",
+			"remindAtHint": "Optional. We'll send a notification at this time.",
+			"clearReminder": "Clear",
+			"cancel": "Cancel",
+			"create": "Create note",
+			"save": "Save changes"
+		},
+		"new": {
+			"title": "New note",
+			"subtitle": "Capture a thought. Add a reminder time if you want one."
+		},
+		"edit": {
+			"title": "Edit note",
+			"subtitle": "Update the note or change its reminder."
+		},
+		"entry": {
+			"back": "Back to notes",
+			"edit": "Edit",
+			"delete": "Delete note",
+			"reminderLabel": "Reminds {when}",
+			"reminderPast": "Reminded {when}",
+			"deleteConfirm": {
+				"title": "Delete note?",
+				"message": "This will permanently delete the note.",
+				"confirm": "Delete"
+			}
+		},
+		"badge": {
+			"reminder": "Reminder",
+			"past": "Past"
+		},
+		"notifications": {
+			"created": "Note saved.",
+			"updated": "Note updated.",
+			"deleted": "Note deleted.",
+			"saveError": "Couldn't save. Please try again.",
+			"deleteError": "Couldn't delete. Please try again."
+		}
+	},
+	"tasks": {
+		"title": "Tasks",
+		"subtitle": "Quick things to get done. Check them off as you go.",
+		"tabs": {
+			"today": "Today",
+			"upcoming": "Upcoming",
+			"all": "All"
+		},
+		"quickAdd": {
+			"placeholder": "What needs doing?",
+			"addDate": "Due date",
+			"submit": "Add"
+		},
+		"row": {
+			"title": "Title",
+			"dueDate": "Due date",
+			"notes": "Notes",
+			"notesPlaceholder": "Any context worth keeping.",
+			"markDone": "Mark done",
+			"markOpen": "Reopen",
+			"delete": "Delete",
+			"cancel": "Cancel",
+			"save": "Save"
+		},
+		"empty": {
+			"todayTitle": "Nothing for today",
+			"upcomingTitle": "Nothing on the horizon",
+			"allTitle": "No tasks yet",
+			"hint": "Add one above. Keep it short - a task is a single action, not a project."
+		},
+		"notifications": {
+			"saveError": "Couldn't save. Please try again.",
+			"deleteError": "Couldn't delete. Please try again."
+		}
+	},
+	"wishlist": {
+		"title": "Wishlist",
+		"subtitle": "Things you want to buy, ranked by how much you actually need them.",
+		"tabs": {
+			"wanted": "Wanted",
+			"purchased": "Got it"
+		},
+		"priority": {
+			"need": "Need",
+			"want": "Want",
+			"someday": "Someday"
+		},
+		"quickAdd": {
+			"placeholder": "What do you want?",
+			"submit": "Add"
+		},
+		"row": {
+			"title": "Title",
+			"priority": "Priority",
+			"price": "Price",
+			"currency": "Currency",
+			"url": "Link",
+			"urlPlaceholder": "https://…",
+			"notes": "Notes",
+			"notesPlaceholder": "Why you want it, which model, where you saw it…",
+			"openLink": "Open link",
+			"reorder": "Drag to reorder",
+			"markPurchased": "Mark as bought",
+			"markWanted": "Move back to wanted",
+			"delete": "Delete",
+			"cancel": "Cancel",
+			"save": "Save"
+		},
+		"empty": {
+			"wantedTitle": "Nothing on the list yet",
+			"purchasedTitle": "Nothing bought yet",
+			"hint": "Add something above and set how much you need it. The must-haves rise to the top."
+		},
+		"notifications": {
+			"saveError": "Couldn't save. Please try again.",
+			"deleteError": "Couldn't delete. Please try again."
+		}
+	}
+}

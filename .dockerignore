@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+**/.next
+**/dist
+**/.turbo
+.git
+.claude
+.vscode
+.github
+.env*
+!.env.example
+.local-storage
+**/*.tsbuildinfo
+TASKS.md
+Dockerfile
+docker-compose*.yml
+install.sh

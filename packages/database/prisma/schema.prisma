@@ -1,0 +1,719 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+  engineType = "client"
+}
+
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "./zod"
+  config   = "./zod-generator.config.json"
+}
+
+model User {
+  id                       String                       @id @default(cuid())
+  name                     String
+  email                    String
+  emailVerified            Boolean
+  image                    String?
+  createdAt                DateTime
+  updatedAt                DateTime
+  username                 String?
+  role                     String?
+  banned                   Boolean?
+  banReason                String?
+  banExpires               DateTime?
+  onboardingComplete       Boolean                      @default(false)
+  paymentsCustomerId       String?
+  locale                   String?
+  displayUsername          String?
+  twoFactorEnabled         Boolean?
+  timezone                 String                       @default("UTC")
+  pinnedModules            String[]                     @default([])
+  showBrandLogo            Boolean                      @default(true)
+  sessions                 Session[]
+  accounts                 Account[]
+  passkeys                 Passkey[]
+  purchases                Purchase[]
+  twofactors               TwoFactor[]
+  notifications            Notification[]
+  notificationPreferences  UserNotificationPreference[]
+  webPushSubscriptions     WebPushSubscription[]
+  startGreeting            StartGreeting?
+  journalEntries           JournalEntry[]
+  calendarEvents           CalendarEvent[]
+  calendarIntegrations     CalendarIntegration[]
+  goals                    Goal[]
+  goalCheckIns             GoalCheckIn[]
+  tasks                    Task[]
+  notes                    Note[]
+  wishlistItems            WishlistItem[]
+  careerRoles              CareerRole[]
+  careerHighlights         CareerHighlight[]
+  careerSalaries           CareerSalary[]
+  careerSkills             CareerSkill[]
+  careerNextSteps          CareerNextStep[]
+  careerProfile            CareerProfile?
+  agentProfile             AgentProfile?
+  agentMemories            AgentMemory[]
+  agentConversations       AgentConversation[]
+  dailyBriefing            DailyBriefing?
+
+  @@unique([email])
+  @@unique([username])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
+
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id           String    @id @default(cuid())
+  accountId    String
+  providerId   String
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken  String?   @db.Text
+  refreshToken String?   @db.Text
+  idToken      String?   @db.Text
+  expiresAt    DateTime?
+  password     String?
+
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String   @db.Text
+  expiresAt  DateTime
+
+  createdAt DateTime?
+  updatedAt DateTime?
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+model Passkey {
+  id           String    @id @default(cuid())
+  name         String?
+  publicKey    String
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  credentialID String
+  counter      Int
+  deviceType   String
+  backedUp     Boolean
+  transports   String?
+  aaguid       String?
+  createdAt    DateTime?
+
+  @@index([userId])
+  @@index([credentialID])
+  @@map("passkey")
+}
+
+model TwoFactor {
+  id          String @id @default(cuid())
+  secret      String
+  backupCodes String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([secret])
+  @@index([userId])
+  @@map("twoFactor")
+}
+
+enum PurchaseType {
+  SUBSCRIPTION
+  ONE_TIME
+}
+
+model Purchase {
+  id             String        @id @default(cuid())
+  user           User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String?
+  type           PurchaseType
+  customerId     String
+  subscriptionId String?       @unique
+  priceId        String
+  status         String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([subscriptionId])
+  @@map("purchase")
+}
+
+enum NotificationTarget {
+  IN_APP
+  EMAIL
+  WEB_PUSH
+}
+
+enum NotificationType {
+  WELCOME
+  APP_UPDATE
+  JOURNAL_DAILY_REMINDER
+  CALENDAR_EVENT_REMINDER
+  GOAL_CHECKIN_REMINDER
+  GOAL_DEADLINE_APPROACHING
+  MEMO_REMINDER
+  DAILY_BRIEFING
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  data      Json             @default("{}")
+  link      String?
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@index([userId])
+  @@map("notification")
+}
+
+model UserNotificationPreference {
+  id        String             @id @default(cuid())
+  userId    String
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  target    NotificationTarget
+  createdAt DateTime           @default(now())
+
+  @@unique([userId, type, target])
+  @@map("user_notification_preference")
+}
+
+/// The install's VAPID key pair for Web Push (RFC 8292), auto-generated on
+/// first use so notifications are zero-config. Single row; VAPID_* env vars
+/// override it when set. Never delete the row casually - existing browser
+/// subscriptions are bound to this public key.
+model WebPushVapidKey {
+  id         String   @id @default("default")
+  publicKey  String
+  privateKey String
+  createdAt  DateTime @default(now())
+
+  @@map("web_push_vapid_key")
+}
+
+/// A browser / installed-PWA Web Push subscription (RFC 8291). The p256dh + auth
+/// keys let us encrypt the payload end-to-end, so the push service (Apple, Google,
+/// Mozilla) only ever relays ciphertext it cannot read. Endpoint is unique;
+/// subscriptions the push service reports as gone (404/410) are deleted on send.
+model WebPushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("web_push_subscription")
+}
+
+enum JournalMood {
+  GREAT
+  GOOD
+  OKAY
+  LOW
+  BAD
+}
+
+model JournalEntry {
+  id        String       @id @default(cuid())
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  content   String       @db.Text
+  mood      JournalMood?
+  isDaily   Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([userId, isDaily, createdAt])
+  @@map("journal_entry")
+}
+
+enum CalendarSource {
+  MANUAL
+  OUTLOOK_ICS
+}
+
+model CalendarIntegration {
+  id             String               @id @default(cuid())
+  userId         String
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider       CalendarSource
+  encryptedUrl   String               @db.Text
+  nonce          String
+  authTag        String
+  lastSyncedAt   DateTime?
+  lastSyncStatus String?
+  lastSyncError  String?              @db.Text
+  eventCount     Int                  @default(0)
+  events         CalendarEvent[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  @@unique([userId, provider])
+  @@map("calendar_integration")
+}
+
+model CalendarEvent {
+  id            String               @id @default(cuid())
+  userId        String
+  user          User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title         String
+  description   String?              @db.Text
+  location      String?
+  startAt       DateTime
+  endAt         DateTime
+  allDay        Boolean              @default(false)
+  color         String               @default("sky")
+  icon          String?
+  rrule         String?
+  excludedDates DateTime[]
+  reminderMinutes Int?
+  source        CalendarSource       @default(MANUAL)
+  externalId    String?
+  integrationId String?
+  integration   CalendarIntegration? @relation(fields: [integrationId], references: [id], onDelete: Cascade)
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  @@unique([integrationId, externalId])
+  @@index([userId, startAt])
+  @@index([userId, endAt])
+  @@index([integrationId])
+  @@map("calendar_event")
+}
+
+enum GoalType {
+  NUMERIC
+  BOOLEAN
+  MILESTONE
+}
+
+enum GoalStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+  ARCHIVED
+}
+
+enum GoalCadence {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+enum GoalHorizon {
+  LONG_TERM
+  PROJECT
+  HABIT
+}
+
+model Goal {
+  id                 String           @id @default(cuid())
+  userId             String
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title              String
+  description        String?          @db.Text
+  type               GoalType         @default(NUMERIC)
+  status             GoalStatus       @default(ACTIVE)
+  horizon            GoalHorizon      @default(LONG_TERM)
+  targetValue        Float?
+  currentValue       Float            @default(0)
+  unit               String?
+  startDate          DateTime?
+  dueDate            DateTime?
+  color              String           @default("sky")
+  icon               String?
+  cadence            GoalCadence      @default(NONE)
+  // Manual drag order within a horizon; 0 = never placed (new goals sit on top
+  // of their section until dragged).
+  sortOrder          Int              @default(0)
+  lastCheckInAt      DateTime?
+  lastReminderAt     DateTime?
+  deadlineNotifiedAt DateTime?
+  completedAt        DateTime?
+  milestones         GoalMilestone[]
+  checkIns           GoalCheckIn[]
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  @@index([userId, status, createdAt])
+  @@index([userId, horizon, status])
+  @@index([userId, dueDate])
+  @@map("goal")
+}
+
+model GoalMilestone {
+  id          String    @id @default(cuid())
+  goalId      String
+  goal        Goal      @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  title       String
+  order       Int       @default(0)
+  done        Boolean   @default(false)
+  doneAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([goalId, order])
+  @@map("goal_milestone")
+}
+
+model GoalCheckIn {
+  id        String   @id @default(cuid())
+  goalId    String
+  goal      Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value     Float    @default(1)
+  note      String?  @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([goalId, createdAt])
+  @@index([userId, createdAt])
+  @@map("goal_check_in")
+}
+
+enum TaskStatus {
+  OPEN
+  DONE
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  notes       String?    @db.Text
+  status      TaskStatus @default(OPEN)
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([userId, status, dueDate])
+  @@index([userId, createdAt])
+  @@map("task")
+}
+
+model Note {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  content   String    @db.Text
+  // null = not pinned. Pinned notes sort by this ascending; 0 = freshly pinned
+  // (tops the pinned section until dragged into place).
+  pinOrder  Int?
+  remindAt  DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([userId, remindAt])
+  @@map("memo")
+}
+
+enum WishlistPriority {
+  NEED
+  WANT
+  SOMEDAY
+}
+
+enum WishlistStatus {
+  WANTED
+  PURCHASED
+}
+
+model WishlistItem {
+  id          String           @id @default(cuid())
+  userId      String
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  notes       String?          @db.Text
+  url         String?
+  price       Float?
+  currency    String?
+  priority    WishlistPriority @default(WANT)
+  status      WishlistStatus   @default(WANTED)
+  // Manual drag order within a priority group; 0 = never placed (new items sit
+  // on top of their group until dragged).
+  sortOrder   Int              @default(0)
+  purchasedAt DateTime?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([userId, status, priority])
+  @@index([userId, createdAt])
+  @@map("wishlist_item")
+}
+
+enum CareerRoleKind {
+  EMPLOYMENT
+  FREELANCE
+  EDUCATION
+  OTHER
+}
+
+enum SalaryBasis {
+  NET
+  GROSS
+}
+
+enum SalaryPeriod {
+  MONTHLY
+  YEARLY
+}
+
+enum SkillLevel {
+  LEARNING
+  WORKING
+  STRONG
+  EXPERT
+}
+
+model CareerRole {
+  id         String            @id @default(cuid())
+  userId     String
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company    String
+  title      String
+  kind       CareerRoleKind    @default(EMPLOYMENT)
+  location   String?
+  startDate  DateTime
+  endDate    DateTime?
+  summary    String?           @db.Text
+  color      String            @default("sky")
+  icon       String?
+  sortIndex  Int               @default(0)
+  highlights CareerHighlight[]
+  salaries   CareerSalary[]
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@index([userId, startDate])
+  @@map("career_role")
+}
+
+model CareerHighlight {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roleId    String
+  role      CareerRole @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  text      String     @db.Text
+  metric    String?
+  sortIndex Int        @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([roleId, sortIndex])
+  @@map("career_highlight")
+}
+
+model CareerSalary {
+  id            String       @id @default(cuid())
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roleId        String?
+  role          CareerRole?  @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  effectiveDate DateTime
+  amount        Decimal      @db.Decimal(20, 2)
+  currency      String       @default("EUR")
+  basis         SalaryBasis  @default(NET)
+  period        SalaryPeriod @default(MONTHLY)
+  label         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([userId, effectiveDate])
+  @@map("career_salary")
+}
+
+model CareerSkill {
+  id        String      @id @default(cuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  category  String
+  level     SkillLevel?
+  sortIndex Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@index([userId, category, sortIndex])
+  @@map("career_skill")
+}
+
+model CareerNextStep {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  text      String
+  detail    String?   @db.Text
+  timeframe String?
+  source    String    @default("MANUAL")
+  done      Boolean   @default(false)
+  doneAt    DateTime?
+  sortIndex Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([userId, done, sortIndex])
+  @@map("career_next_step")
+}
+
+model CareerProfile {
+  id                 String    @id @default(cuid())
+  userId             String    @unique
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reflections        String?   @db.Text
+  insightsJson       String?   @db.Text
+  insightsGeneratedAt DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@map("career_profile")
+}
+
+// ----- AI agent -----
+
+// The "soul" + "info about me": one editable row per user. personaPrompt is the
+// agent's identity/voice, coreProfile is the standing facts about the user. Both
+// are user-authored, so they're trusted to sit in the system prompt.
+model AgentProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // What the user calls their agent. Injected into every system prompt.
+  name          String   @default("Tophe")
+  personaPrompt String   @db.Text
+  coreProfile   String   @db.Text
+  // Free-text "what I care about" that steers the daily briefing's news filter.
+  interests     String   @default("") @db.Text
+  // User-chosen news sources for the briefing; [] means the built-in curated set.
+  newsFeeds     Json     @default("[]")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("agent_profile")
+}
+
+// What the agent has chosen to remember across sessions. Recalled by keyword.
+model AgentMemory {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content   String   @db.Text
+  source    String   @default("AGENT")
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("agent_memory")
+}
+
+// Persisted chat threads. messages stores the full UIMessage[] list, rewritten
+// on each turn. id is client-generated so the stream needn't return one.
+model AgentConversation {
+  id        String         @id
+  userId    String
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String?
+  messages  AgentMessage[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@index([userId, updatedAt])
+  @@map("agent_conversation")
+}
+
+model AgentMessage {
+  id             String            @id
+  conversationId String
+  conversation   AgentConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String
+  parts          Json
+  createdAt      DateTime          @default(now())
+  order          Int               @default(0)
+
+  @@index([conversationId, order])
+  @@map("agent_message")
+}
+
+/// One cached start-page greeting per user. Persisted (not in-memory) so every
+/// device shares the same line for a given time-slot and it survives restarts /
+/// multiple instances. `slotKey` is the local date + time-of-day; when it no
+/// longer matches "now", the greeting is regenerated and this row is overwritten.
+model StartGreeting {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slotKey   String
+  headline  String
+  note      String   @db.Text
+  updatedAt DateTime @updatedAt
+
+  @@map("start_greeting")
+}
+
+/// One cached daily briefing per user, keyed by local date (dayKey, YYYY-MM-DD).
+/// Like StartGreeting: persisted so the "morning paper" is composed at most once
+/// a day and shared across devices. `payload` holds the fully-resolved briefing
+/// (day narrative + ranked news with trusted titles/links already mapped in), so
+/// rendering never re-fetches feeds or re-runs the model.
+model DailyBriefing {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dayKey    String
+  payload   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("daily_briefing")
+}

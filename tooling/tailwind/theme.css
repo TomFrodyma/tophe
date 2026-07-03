@@ -1,0 +1,296 @@
+@layer base {
+	:root {
+		/* ===== Soft-brutalist brand palette =====
+		   Bold geometric blocks, oversized type, warm cream canvas.
+		   Cream is the canvas - NEVER use pure white as page bg.
+		   Near-black for text - NEVER use pure #000. */
+
+		--brand-bg:    #F5F1E8;  /* warm paper - page canvas */
+		--brand-ink:   #2A2724;  /* warm charcoal (brown undertone, matches the paper) */
+		--brand-blue:  #4F6BF6;  /* periwinkle - the one deliberately cool accent */
+		--brand-coral: #D8421F;  /* deep vermilion - readable as text AND under white text */
+		--brand-sand:  #9A7434;  /* bronzed tan - deep enough to read as badge text */
+
+		/* App-wide pop palette - saturated accents for tiles, badges, callouts,
+		   chart series, etc. NOT for page backgrounds or body text.
+		   Roles establish a usage hierarchy: primary is the anchor and should
+		   appear most often; highlight is the loudest and should be used sparingly.
+		   These do NOT swap in dark mode by default - to override, redeclare any
+		   of them inside the `.dark` block below.
+		   Note: all five currently pair with white text. If you swap one to a
+		   pale value, flip its text to `text-brand-ink` in ModuleGrid.tsx. */
+		--pop-primary:   #4F6BF6;
+		--pop-secondary: #E4633C;
+		--pop-tertiary:  #A847C2;
+		--pop-accent:    #3E9960;
+		--pop-highlight: #D6416B;
+
+		/* ===== Paper/ink system rebound onto brand tokens =====
+		   Existing components (`.paper`, `bg-paper-elev`, `text-ink-soft`, etc.)
+		   still resolve, but now produce the soft-brutalist look. */
+
+		--bg:          var(--brand-bg);
+		--bg-elev:     var(--brand-bg);
+		--bg-elev-2:   var(--brand-bg);
+		--bg-sunk:     #ECE7DB;     /* one shade darker than the paper */
+		--paper-warm:  var(--brand-bg);
+		--paper-cool:  #ECE7DB;
+		--paper-hero:  #2A2724;     /* Start-page hero cards (greet + quote). Name kept in the `paper-*` family for system consistency - value can be any shade. */
+		--paper-hero-ink: #FFFFFF;  /* text on the hero surface - flips with it in dark mode */
+
+		--ink:        var(--brand-ink);
+		--ink-soft:   rgba(42, 39, 36, 0.78);
+		--ink-faint:  rgba(42, 39, 36, 0.52);
+
+		--rule:        rgba(42, 39, 36, 0.10);
+		--rule-strong: rgba(42, 39, 36, 0.18);
+		--shade:       rgba(42, 39, 36, 0.06);
+		--shade-soft:  rgba(42, 39, 36, 0.03);
+		--vignette:    transparent;  /* no ambient wash - flat solid canvas */
+
+		/* Accent - periwinkle on cream. */
+		--accent:      var(--brand-blue);
+		--accent-deep: #3A55E0;
+		--accent-soft: rgba(79, 107, 246, 0.12);
+		--accent-ink:  #FFFFFF;
+
+		/* Shadows kept minimal - soft brutalism uses flat solid blocks. */
+		--shadow-card: none;
+		--shadow-lift: 0 2px 0 rgba(42, 39, 36, 0.06);
+		--shadow-page: 0 2px 0 rgba(42, 39, 36, 0.06);
+
+		/* Shadcn token bridge - every existing component flows through here. */
+		--background:           var(--bg);
+		--foreground:           var(--ink);
+		--card:                 var(--bg-elev-2);
+		--card-foreground:      var(--ink);
+		--popover:              var(--bg-elev-2);
+		--popover-foreground:   var(--ink);
+		--primary:              var(--ink);
+		--primary-foreground:   var(--bg-elev-2);
+		--secondary:            var(--bg-sunk);
+		--secondary-foreground: var(--ink);
+		--muted:                var(--bg-sunk);
+		--muted-foreground:     var(--ink-soft);
+		--accent-foreground:    var(--ink);
+		--destructive:          #DC2626;
+		--destructive-foreground: #FFFFFF;
+		--success:              #16A34A;
+		--success-foreground:   #FFFFFF;
+		--border:               var(--rule);
+		--input:                var(--rule);
+		--ring:                 var(--accent);
+		--radius: 0.5rem;
+
+		/* Soft-brutalist radii - use these two, nothing in between. */
+		--radius-block: 28px;
+		--radius-pill:  9999px;
+
+		/* Module tile palette (Start grid) - the original pop family, restored,
+		   then extended with two derived hues (honey, sky-teal) so all seven
+		   tiles are unique. Same bright character as the original design; the
+		   pale ones (tasks, notes) deliberately keep white type, as before. */
+		--module-journal:  #FF744E;  /* coral - the original journal tile */
+		--module-calendar: #4F6BF6;  /* periwinkle - original */
+		--module-goals:    #C352DC;  /* orchid - original */
+		--module-tasks:    #67DA84;  /* mint - original */
+		--module-notes:    #FFB84E;  /* honey - derived from coral, hue rotated */
+		--module-career:   #4EC5DC;  /* sky-teal - derived between mint and periwinkle */
+		--module-wishlist: #ED4E73;  /* rose - the original highlight, finally on a tile */
+		--module-briefing: #7A5AF0;  /* violet - the briefing flagship, distinct from periwinkle/orchid */
+		--module-ink:      #FFFFFF;  /* tile text - white reads on the bright light-mode tiles */
+	}
+
+	/* ====== Dark mode - warm midnight canvas, muted cream text ======
+	   Tuned per research: no pure black (avoids halation), no pure white text
+	   (avoids vibration), accents nudged lighter so they read as confident on
+	   dark instead of shouting. All pairings meet WCAG AA for large/bold UI text.
+	*/
+	.dark {
+		/* Brand tokens - light cream/ink swap, accents retuned for luminance. */
+		--brand-bg:    #191613;  /* espresso black - genuinely warm, same undertone as the paper */
+		--brand-ink:   #EAE5D9;  /* warm cream - softer than the light canvas to cut halation */
+		--brand-blue:  #8696FF;  /* periwinkle nudged lighter - readable on dark */
+		--brand-coral: #FF8060;  /* vermilion nudged lighter - calmer on dark */
+		--brand-sand:  #B8884A;  /* mid tan - supports cream-on-sand blocks AND sand-on-dark text */
+
+		/* Pop palette - pulled darker and slightly desaturated so the modules
+		   read as confident on the dark canvas instead of shouting. White text
+		   still pairs cleanly with all five. */
+		--pop-primary:   #2b3fb1;  /* deeper periwinkle */
+		--pop-secondary: #d05a36;  /* terracotta */
+		--pop-tertiary:  #9942ae;  /* deeper purple */
+		--pop-accent:    #529763;  /* forest, not mint */
+		--pop-highlight: #9b3851;  /* wine-rose */
+
+		--bg:          var(--brand-bg);
+		--bg-elev:     #221E1A;  /* card/popover surface - one tier above page */
+		--bg-elev-2:   #2B2722;  /* dialog surface - two tiers above */
+		--bg-sunk:     #131110;  /* sidebar - one tier below page */
+		--paper-warm:  var(--bg-elev);
+		--paper-cool:  var(--bg-sunk);
+		--paper-hero:  var(--bg-elev-2);     /* Start-page hero - calm dark block (was a cream slab that glared on the dark canvas) */
+		--paper-hero-ink: var(--brand-ink);  /* cream text on the dark hero */
+
+		--ink:        var(--brand-ink);
+		--ink-soft:   rgba(234, 229, 217, 0.78);
+		--ink-faint:  rgba(234, 229, 217, 0.50);
+
+		--rule:        rgba(234, 229, 217, 0.12);
+		--rule-strong: rgba(234, 229, 217, 0.22);
+		--shade:       rgba(0, 0, 0, 0.35);
+		--shade-soft:  rgba(0, 0, 0, 0.20);
+		--vignette:    transparent;
+
+		--accent:      var(--brand-blue);
+		--accent-deep: #6B82F8;
+		--accent-soft: rgba(134, 150, 255, 0.18);
+		--accent-ink:  var(--brand-bg);
+
+		--shadow-card: none;
+		--shadow-lift: 0 2px 0 rgba(0, 0, 0, 0.45);
+		--shadow-page: 0 2px 0 rgba(0, 0, 0, 0.45);
+
+		--background:           var(--bg);
+		--foreground:           var(--ink);
+		--card:                 var(--bg-elev-2);
+		--card-foreground:      var(--ink);
+		--popover:              var(--bg-elev-2);
+		--popover-foreground:   var(--ink);
+		--primary:              var(--ink);
+		--primary-foreground:   var(--bg);
+		--secondary:            var(--bg-sunk);
+		--secondary-foreground: var(--ink);
+		--muted:                var(--bg-sunk);
+		--muted-foreground:     var(--ink-soft);
+		--accent-foreground:    var(--ink);
+		--destructive:          #F87171;
+		--destructive-foreground: #0F0F10;
+		--success:              #4ADE80;
+		--success-foreground:   #0F0F10;
+		--border:               var(--rule);
+		--input:                var(--rule);
+		--ring:                 var(--accent);
+
+		/* Module tiles, dark mode: neutralized to one calm elevated surface.
+		   Saturated tiles read as "loud" on the dark canvas; identity now comes
+		   from each tile's icon + label, not its fill. Light mode keeps the bright
+		   pop family. To give one module its color back, point its line at a hue. */
+		--module-journal:  var(--bg-elev-2);
+		--module-calendar: var(--bg-elev-2);
+		--module-goals:    var(--bg-elev-2);
+		--module-tasks:    var(--bg-elev-2);
+		--module-notes:    var(--bg-elev-2);
+		--module-career:   var(--bg-elev-2);
+		--module-wishlist: var(--bg-elev-2);
+		--module-briefing: var(--bg-elev-2);
+		--module-ink:      var(--brand-ink);  /* cream text on the dark tiles - pure white vibrates on dark, per the dark-mode note above */
+	}
+}
+
+@theme {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--shade);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	/* Brand colors - used as `bg-brand-bg`, `text-brand-ink`, `bg-brand-blue`, etc. */
+	--color-brand-bg:    var(--brand-bg);
+	--color-brand-ink:   var(--brand-ink);
+	--color-brand-blue:  var(--brand-blue);
+	--color-brand-coral: var(--brand-coral);
+	--color-brand-sand:  var(--brand-sand);
+
+	/* App-wide pop palette - used as `bg-pop-primary`, `text-pop-secondary`, etc.
+	   Hex values live in `:root` above; edit there. */
+	--color-pop-primary:   var(--pop-primary);
+	--color-pop-secondary: var(--pop-secondary);
+	--color-pop-tertiary:  var(--pop-tertiary);
+	--color-pop-accent:    var(--pop-accent);
+	--color-pop-highlight: var(--pop-highlight);
+
+	/* Start-grid module tiles - used as `bg-module-journal`, etc.
+	   One hue per module; hex values live in `:root`/`.dark` above. */
+	--color-module-journal:  var(--module-journal);
+	--color-module-calendar: var(--module-calendar);
+	--color-module-goals:    var(--module-goals);
+	--color-module-tasks:    var(--module-tasks);
+	--color-module-notes:    var(--module-notes);
+	--color-module-career:   var(--module-career);
+	--color-module-wishlist: var(--module-wishlist);
+	--color-module-briefing: var(--module-briefing);
+	--color-module-ink:      var(--module-ink);
+
+	/* The two allowed radii - `rounded-block` for cards, `rounded-pill` for buttons. */
+	--radius-block: var(--radius-block);
+	--radius-pill:  var(--radius-pill);
+
+	/* Paper & ink semantic tokens - also exposed as Tailwind colors so we can
+	   say `text-ink`, `bg-paper-warm`, `border-rule-strong`. */
+	--color-ink: var(--ink);
+	--color-ink-soft: var(--ink-soft);
+	--color-ink-faint: var(--ink-faint);
+	--color-paper: var(--bg);
+	--color-paper-elev: var(--bg-elev);
+	--color-paper-elev-2: var(--bg-elev-2);
+	--color-paper-sunk: var(--bg-sunk);
+	--color-paper-warm: var(--paper-warm);
+	--color-paper-cool: var(--paper-cool);
+	--color-paper-hero: var(--paper-hero);
+	--color-paper-hero-ink: var(--paper-hero-ink);
+	--color-rule: var(--rule);
+	--color-rule-strong: var(--rule-strong);
+	--color-ink-accent: var(--accent);
+	--color-ink-accent-deep: var(--accent-deep);
+	--color-ink-accent-soft: var(--accent-soft);
+
+	--font-serif: var(--font-serif-family);
+	--font-sans: var(--font-sans-family);
+	--font-mono: var(--font-mono-family);
+	--font-news: var(--font-news-family);
+
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+
+	--animation-accordion-down: accordion-down 0.2s ease-out;
+	--animation-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}

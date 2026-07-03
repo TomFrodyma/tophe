@@ -1,0 +1,32 @@
+{
+	"common": {
+		"openLinkInBrowser": "If you want to open the link in a different browser than your default one, copy and paste this link:",
+		"otp": "One-time password",
+		"useLink": "or use the following link:"
+	},
+	"emailVerification": {
+		"body": "Hey,\nplease click the link below to verify this new email address.",
+		"confirmEmail": "Verify email",
+		"subject": "Verify your email"
+	},
+	"forgotPassword": {
+		"body": "Hey,\nyou requested a password reset.\n\nClick the button below to reset your password.",
+		"resetPassword": "Reset password",
+		"subject": "Reset your password"
+	},
+	"magicLink": {
+		"body": "Hey,\nyou requested a login email for TOPHE.\n\nClick the link below to login.",
+		"login": "Login",
+		"subject": "Login to TOPHE"
+	},
+	"newUser": {
+		"body": "Hey,\nthanks for signing up for TOPHE.\n\nTo start using the app, please confirm your email address by clicking the link below.",
+		"confirmEmail": "Confirm email",
+		"subject": "Confirm your email"
+	},
+	"notification": {
+		"openInApp": "Open this notification in the app:",
+		"subject": "New notification",
+		"view": "View"
+	}
+}
