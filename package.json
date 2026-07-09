@@ -14,7 +14,7 @@
 		"format:check": "oxfmt --check ."
 	},
 	"dependencies": {
-		"oxlint-tsgolint": "^0.20.0"
+		"oxlint-tsgolint": "^0.24.0"
 	},
 	"devDependencies": {
 		"@repo/tsconfig": "workspace:*",
